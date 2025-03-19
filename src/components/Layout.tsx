@@ -9,10 +9,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background dark:bg-background-dark text-foreground dark:text-foreground-dark">
       <Navbar />
       <motion.main 
-        className="flex-grow pt-16"
+        className="flex-grow"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

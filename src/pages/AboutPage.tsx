@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import { CheckCircle, Users, BarChart3, Globe, Zap, Shield } from 'lucide-react';
+import Button from '../components/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/Card';
 
 export default function AboutPage() {
   const team = [
@@ -19,56 +22,88 @@ export default function AboutPage() {
     },
   ];
 
+  const values = [
+    {
+      title: 'Performance',
+      description: 'We obsess over milliseconds because speed is a competitive advantage.',
+      icon: <Zap className="h-6 w-6 text-vercel-blue" />,
+    },
+    {
+      title: 'Global',
+      description: 'We build for a worldwide audience with a global edge network.',
+      icon: <Globe className="h-6 w-6 text-vercel-blue" />,
+    },
+    {
+      title: 'Security',
+      description: 'We implement industry best practices to keep your data safe.',
+      icon: <Shield className="h-6 w-6 text-vercel-blue" />,
+    },
+    {
+      title: 'Reliability',
+      description: 'We engineer our platform for 99.99% uptime and reliability.',
+      icon: <CheckCircle className="h-6 w-6 text-vercel-blue" />,
+    },
+    {
+      title: 'Community',
+      description: 'We foster an inclusive community of developers and creators.',
+      icon: <Users className="h-6 w-6 text-vercel-blue" />,
+    },
+    {
+      title: 'Innovation',
+      description: 'We continuously push the boundaries of what's possible on the web.',
+      icon: <BarChart3 className="h-6 w-6 text-vercel-blue" />,
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gray-50 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-24 pb-16 md:pt-32 md:pb-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About Us
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              About <span className="vercel-gradient-text">Vercel</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Learn more about our company and our mission.
+            <p className="text-xl text-accents-5 max-w-3xl mx-auto">
+              Our mission is to make cloud computing accessible to everyone.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="prose prose-lg text-gray-600">
+              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+              <div className="space-y-4 text-accents-5">
                 <p>
-                  Founded in 2023, SimpleWeb began with a simple mission: to create beautiful, 
-                  functional websites that help businesses succeed online.
+                  Founded in 2019, Vercel was created with a simple mission: to provide the best developer experience for deploying frontend frameworks.
                 </p>
                 <p>
-                  What started as a small team of passionate designers and developers has grown 
-                  into a full-service web development agency serving clients worldwide.
+                  What started as a deployment platform for static sites has evolved into a comprehensive suite of tools and services for frontend developers.
                 </p>
                 <p>
-                  We believe that great design and technology should be accessible to everyone. 
-                  That's why we work closely with our clients to understand their unique needs 
-                  and deliver solutions that exceed expectations.
+                  Today, Vercel powers millions of websites and applications, from individual developers to large enterprises, all with the same commitment to performance and developer experience.
                 </p>
+              </div>
+              <div className="mt-8">
+                <Button>Learn More</Button>
               </div>
             </motion.div>
             
             <motion.div
-              className="relative h-96 rounded-lg overflow-hidden shadow-lg"
+              className="relative rounded-lg overflow-hidden shadow-xl"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -84,13 +119,13 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 bg-accents-1 dark:bg-accents-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold mb-4">
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-accents-5 max-w-3xl mx-auto">
               The talented people behind our success.
             </p>
           </div>
@@ -99,20 +134,23 @@ export default function AboutPage() {
             {team.map((person, index) => (
               <motion.div 
                 key={person.name}
-                className="bg-white rounded-lg overflow-hidden shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <img 
-                  src={person.image} 
-                  alt={person.name} 
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-gray-900">{person.name}</h3>
-                  <p className="text-indigo-600">{person.role}</p>
-                </div>
+                <Card hover={false} className="overflow-hidden">
+                  <div className="aspect-w-1 aspect-h-1">
+                    <img 
+                      src={person.image} 
+                      alt={person.name} 
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                  <CardContent className="text-center py-6">
+                    <h3 className="text-xl font-semibold">{person.name}</h3>
+                    <p className="text-accents-5">{person.role}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -120,38 +158,48 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold mb-4">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-accents-5 max-w-3xl mx-auto">
               The principles that guide our work every day.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Quality', description: 'We never compromise on quality. Every pixel, every line of code is crafted with care.' },
-              { title: 'Innovation', description: 'We stay at the forefront of technology to deliver cutting-edge solutions.' },
-              { title: 'Collaboration', description: 'We believe in working closely with our clients to achieve the best results.' },
-              { title: 'Integrity', description: 'We are honest, transparent, and ethical in all our business practices.' },
-              { title: 'Creativity', description: 'We approach each project with fresh ideas and creative thinking.' },
-              { title: 'Results', description: 'We focus on delivering measurable results that help our clients succeed.' },
-            ].map((value, index) => (
+            {values.map((value, index) => (
               <motion.div 
                 key={value.title}
-                className="bg-gray-50 p-8 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <Card>
+                  <CardHeader>
+                    <div className="mb-4">{value.icon}</div>
+                    <CardTitle>{value.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-accents-5">{value.description}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-accents-1 dark:bg-accents-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-6">Join Our Team</h2>
+          <p className="text-xl text-accents-5 max-w-3xl mx-auto mb-8">
+            We're always looking for talented individuals to join our mission.
+          </p>
+          <Button size="lg">View Open Positions</Button>
         </div>
       </section>
     </div>
